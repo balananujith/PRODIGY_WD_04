@@ -804,6 +804,37 @@
         max: 25,
         speed: 300
       };
+      // JavaScript for Portfolio Filtering
+
+document.addEventListener('DOMContentLoaded', function () {
+    const filterItems = document.querySelectorAll('.filter-item');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+    filterItems.forEach(item => {
+        item.addEventListener('click', function () {
+            const target = this.getAttribute('data-target');
+
+            // Remove 'active' class from all filter items
+            filterItems.forEach(item => {
+                item.classList.remove('active');
+            });
+
+            // Add 'active' class to the clicked filter item
+            this.classList.add('active');
+
+            portfolioItems.forEach(item => {
+                const category = item.getAttribute('data-category');
+
+                if (target === 'all' || target === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
+});
+
     </script>
   </body>
 </html>
